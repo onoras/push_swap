@@ -6,52 +6,71 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 22:05:47 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/10 12:27:19 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/16 17:41:45 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static inline int	idx(t_stack *s, int logical_index)
+int	idx(t_stack *s, int logical_index)
 {
-	return ((s->top + logical_index) % s->elements);
+	return ((s->t + logical_index) % s->e);
 }
 
 void	swap(t_stack *s)
 {
 	int	tmp;
 
-	if (s->size < 2)
+	if (s->s < 2)
 		return ;
-	tmp = s->data[idx(s, 0)];
-	s->data[idx(s, 0)] = s->data[idx(s, 1)];
-	s->data[idx(s, 1)] = tmp;
+	tmp = s->d[idx(s, 0)];
+	s->d[idx(s, 0)] = s->d[idx(s, 1)];
+	s->d[idx(s, 1)] = tmp;
 }
 
 void	push(t_stack *dst, t_stack *src)
 {
-	int	tmp;
-
-	if (src->size == 0)
+	if (src->s == 0)
 		return ;
-	tmp = src->data[idx(src, 0)];
-	src->top = (src->top + 1) % src->elements;
-	src->size--;
-	dst->top = (dst->top - 1 + dst->elements) % dst->elements;
-	dst->data[idx(dst, 0)] = tmp;
-	dst->size++;
+
+	dst->t = (dst->t - 1 + dst->e) % dst->e;
+	dst->d[dst->t] = src->d[idx(src, 0)];
+	dst->s++;
+
+	src->t = (src->t + 1) % src->e;
+	src->s--;
 }
 
 void	rotate(t_stack *s)
 {
-	if (s->size < 2)
+	int	tmp;
+	int	i;
+
+	if (s->s < 2)
 		return ;
-	s->top = (s->top + 1) % s->elements;
+	tmp = s->d[idx(s, 0)];
+	i = 0;
+	while (i < s->s - 1)
+	{
+		s->d[idx(s, i)] = s->d[idx(s, i + 1)];
+		i++;
+	}
+	s->d[idx(s, s->s - 1)] = tmp;
 }
 
 void	reverse_rotate(t_stack *s)
 {
-	if (s->size < 2)
+	int	tmp;
+	int	i;
+
+	if (s->s < 2)
 		return ;
-	s->top = (s->top - 1 + s->elements) % s->elements;
+	tmp = s->d[idx(s, s->s - 1)];
+	i = s->s - 1;
+	while (i > 0)
+	{
+		s->d[idx(s, i)] = s->d[idx(s, i - 1)];
+		i--;
+	}
+	s->d[idx(s, 0)] = tmp;
 }

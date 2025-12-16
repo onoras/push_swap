@@ -7,7 +7,8 @@ NAME = push_swap
 SRCS =	push_swap.c \
 		push_swap_utils.c \
 		parser.c \
-		validate_args.c
+		validate_args.c \
+		small_sort.c
 
 OFILES = $(SRCS:.c=.o)
 

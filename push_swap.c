@@ -6,7 +6,7 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:02:38 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/12 13:39:08 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/16 17:42:55 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 
 void	init_stack(t_stack *s, int capacity)
 {
-	s->data = malloc(sizeof(int) * capacity);
-	if (!s->data)
+	s->d = malloc(sizeof(int) * capacity);
+	if (!s->d)
 	{
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	s->size = 0;
-	s->elements = capacity;
-	s->top = 0;
+	s->s = 0;
+	s->e = capacity;
+	s->t = 0;
 }
 
 int	parse(char **argv, int argc, int **out_values, int *out_count)
@@ -44,10 +44,24 @@ void	print_stack(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (i < stack->size)
+	while (i < stack->s)
 	{
-		ft_printf("%d\n", stack->data[(stack->top + i) % stack->elements]);
+		ft_printf("%d\n", stack->d[(stack->t + i) % stack->e]);
 		i++;
+	}
+}
+
+void	size_parser(t_stack *a, t_stack *b)
+{
+	if (a->s == 2)
+		sort_two(a);
+	if (a->s == 3)
+		sort_three(a);
+	if (a->s == 5)
+		sort_five(a, b);
+	if (a->s > 5)
+	{
+		/* binary LSD radix sort */
 	}
 }
 
@@ -60,19 +74,22 @@ int	main(int argc, char **argv)
 	int		i;
 
 	if (!parse(argv, argc, &values, &count))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (write(2, "Error\n", 6), 1);
 	init_stack(&a, count);
 	init_stack(&b, count);
 	i = 0;
 	while (i < count)
 	{
-		a.data[i] = values[i];
-		a.size++;
+		a.d[i] = values[i];
+		a.s++;
 		i++;
 	}
+	ft_printf("Stack a before 1st Push\n");
 	print_stack(&a);
+	size_parser(&a, &b);
+	ft_printf("Stack a\n");
+	print_stack(&a);
+	ft_printf("Stack b\n");
+	print_stack(&b);
 	return (0);
 }
