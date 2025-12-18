@@ -6,7 +6,7 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 22:05:47 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/16 17:41:45 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/18 11:40:01 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ void	push(t_stack *dst, t_stack *src)
 {
 	if (src->s == 0)
 		return ;
-
 	dst->t = (dst->t - 1 + dst->e) % dst->e;
 	dst->d[dst->t] = src->d[idx(src, 0)];
 	dst->s++;
-
 	src->t = (src->t + 1) % src->e;
 	src->s--;
 }

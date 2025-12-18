@@ -8,7 +8,12 @@ SRCS =	push_swap.c \
 		push_swap_utils.c \
 		parser.c \
 		validate_args.c \
-		small_sort.c
+		small_sort.c \
+		index_values.c \
+		ops_a.c \
+		ops_b.c \
+		ops_rr.c \
+		big_sort.c
 
 OFILES = $(SRCS:.c=.o)
 

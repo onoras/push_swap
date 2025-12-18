@@ -6,13 +6,12 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:58:46 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/16 17:44:17 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/18 01:41:46 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
-
 
 int	find_min_index(t_stack *a)
 {
@@ -47,7 +46,7 @@ void	push_smallest_to_b(t_stack *a, t_stack *b)
 		i = 0;
 		while (i < min_idx)
 		{
-			rotate(a);
+			rotate_a(a);
 			i++;
 		}
 	}
@@ -57,50 +56,49 @@ void	push_smallest_to_b(t_stack *a, t_stack *b)
 		i = 0;
 		while (i < rotations)
 		{
-			reverse_rotate(a);
+			reverse_rotate_a(a);
 			i++;
 		}
 	}
-	push(b, a);
+	push_b(b, a);
 }
 
 void	sort_two(t_stack *s)
 {
 	if (s->d[idx(s, 0)] > s->d[idx(s, 1)])
-		swap(s);
+		swap_a(s);
 }
 
 void	sort_three(t_stack *s)
 {
 	if (s->d[idx(s, 0)] > s->d[idx(s, 1)] && s->d[idx(s, 1)] < s->d[idx(s, 2)]
 		&& s->d[idx(s, 0)] < s->d[idx(s, 2)])
-		swap(s);
+		swap_a(s);
 	else if (s->d[idx(s, 0)] > s->d[idx(s, 1)]
 		&& s->d[idx(s, 1)] > s->d[idx(s, 2)])
 	{
-		swap(s);
-		reverse_rotate(s);
+		swap_a(s);
+		reverse_rotate_a(s);
 	}
 	else if (s->d[idx(s, 0)] > s->d[idx(s, 1)] && s->d[idx(s, 1)]
 		< s->d[idx(s, 2)] && s->d[idx(s, 0)] > s->d[idx(s, 2)])
-		rotate(s);
+		rotate_a(s);
 	else if (s->d[idx(s, 0)] < s->d[idx(s, 1)] && s->d[idx(s, 1)]
 		> s->d[idx(s, 2)] && s->d[idx(s, 0)] < s->d[idx(s, 2)])
 	{
-		swap(s);
-		rotate(s);
+		swap_a(s);
+		rotate_a(s);
 	}
 	else if (s->d[idx(s, 0)] < s->d[idx(s, 1)] && s->d[idx(s, 1)]
 		> s->d[idx(s, 2)] && s->d[idx(s, 0)] > s->d[idx(s, 2)])
-		reverse_rotate(s);
+		reverse_rotate_a(s);
 }
 
 void	sort_five(t_stack *a, t_stack *b)
 {
-	push_smallest_to_b(a, b);
-	push_smallest_to_b(a, b);
+	while (a->s > 3)
+		push_smallest_to_b(a, b);
 	sort_three(a);
-	push(a, b);
-	push(a, b);
+	while (b->s > 0)
+		push_a(a, b);
 }
-
