@@ -6,7 +6,7 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:02:38 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/18 15:57:07 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/19 15:39:37 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,6 @@ int	parse(char **argv, int argc, int **out_values, int *out_count)
 	return (1);
 }
 
-void	print_stack(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->s)
-	{
-		ft_printf("%d\n", stack->d[(stack->t + i) % stack->e]);
-		i++;
-	}
-}
-
 void	size_parser(t_stack *a, t_stack *b)
 {
 	if (a->s == 2)
@@ -60,9 +48,7 @@ void	size_parser(t_stack *a, t_stack *b)
 	if (a->s == 5 || a->s == 4)
 		sort_five(a, b);
 	if (a->s > 5)
-	{
 		big_sort(a, b);
-	}
 }
 
 int	main(int argc, char **argv)

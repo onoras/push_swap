@@ -6,7 +6,7 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 00:24:27 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/18 00:25:44 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/19 14:35:37 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,3 @@ void	reverse_rotate_b(t_stack *b)
 	reverse_rotate(b);
 	ft_printf("rrb\n");
 }
-
-

@@ -6,13 +6,13 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 22:05:47 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/18 11:40:01 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/19 16:04:36 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	idx(t_stack *s, int logical_index)
+int	idx(const t_stack *s, int logical_index)
 {
 	return ((s->t + logical_index) % s->e);
 }

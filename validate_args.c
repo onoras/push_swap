@@ -6,12 +6,11 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 23:02:53 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/11 23:03:08 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/19 16:04:59 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "printf/ft_printf.h"
 #include <limits.h>
 
 int	skip_sign(const char *s, int *sign)
@@ -63,7 +62,7 @@ int	validate(const char *s, int *out)
 	return (1);
 }
 
-int	check_duplis(int *values, int c)
+int	check_duplis(const int *values, int c)
 {
 	int	i;
 	int	j;

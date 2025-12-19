@@ -6,12 +6,11 @@
 /*   By: onoras <onoras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:58:46 by onoras            #+#    #+#             */
-/*   Updated: 2025/12/18 01:41:46 by onoras           ###   ########.fr       */
+/*   Updated: 2025/12/19 15:52:25 by onoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 int	find_min_index(t_stack *a)
 {

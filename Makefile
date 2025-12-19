@@ -13,7 +13,9 @@ SRCS =	push_swap.c \
 		ops_a.c \
 		ops_b.c \
 		ops_rr.c \
-		big_sort.c
+		big_sort.c \
+		big_sort_utils.c \
+		big_sort_execs.c
 
 OFILES = $(SRCS:.c=.o)
 
